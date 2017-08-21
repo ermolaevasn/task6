@@ -10,7 +10,7 @@ namespace задание6
     {
         static void Main(string[] args)
         {
-            double a,b,c;
+            double a,b,c,tmp;
             int N, k;
             Vvod("введите a",out a);            
             Vvod("введите b", out b);           
@@ -19,13 +19,28 @@ namespace задание6
             Proverka("число N", ref N);
             VvodTwo("введите k", out k);
             Proverka("число k", ref k);
-
+            function(a,b,c,k+4,4);
+            Console.ReadKey();
             double[] mas = new double[k];
 
         }
-        static double function(double[] masiv,int x)
+        static double function(double x, double y, double z,int razm,int i)
         {
-            return masiv[x-1];
+            double a;
+            if (razm==i)
+            {
+                return 1;
+            }
+            else
+            {
+                a=0.7 * z-0.2*y+i*x;
+                Console.Write(a + " ");
+                i++;
+                x = y;
+                y = z;
+                z = a;
+                return function(x,y,z,razm,i);
+            }
         }
         static double Vvod(string s, out double n)//проверка ввода
         {
